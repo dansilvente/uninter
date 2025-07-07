@@ -79,15 +79,57 @@
                 cursor: pointer;
             }
 
+            .botaoFormulario {
+                width: 50%;
+                margin: auto;
+                font-size: large;
+                height: 3rem;
+                border-radius: 1.5rem;
+                background-color: #373f51;
+                border-color: #373f51;
+                color: white;
+                font-weight: bold;
+                transition: 0.5s;
+            }
+
+            .botaoFormulario:hover {
+                box-shadow: 0 0 0.2rem 0.1rem #373f51;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+
             .conteudo {
                 background-color: whitesmoke;
                 padding: 1rem 0.6rem 1rem 0.6rem;
-                
                 font-family: "Faustina", serif;
                 font-size: 1.4rem;
                 text-align: justify;
                 border-radius: 0.2rem 0.2rem 0.2rem 0.2rem;
                 transition: 0.5s;
+            }
+
+            .titulo_secao {
+                text-align: center;
+                font-size: larger;
+                font-weight: bold;
+                font-family: "Lexend", sans-serif;
+            }
+
+            .observacao {
+                font-size: medium;
+                font-style: italic;
+            }
+
+            input {
+                height: 1.5rem;
+            }
+
+            form {
+                align-self: center;
+                margin: auto;
+                width: 60%;
+                display: flex;
+                flex-direction: column;
             }
 
         </style>
@@ -111,6 +153,21 @@
                 // Exibe e seleciona apenas o item clicado
                 document.getElementById(secao).removeAttribute("hidden");
                 document.getElementById(botao).setAttribute("selecionado", true);
+            }
+            function botaoFormulario() {
+                
+                nome = document.getElementById("form_nome").value
+                email = document.getElementById("form_email").value
+                mensagem = document.getElementById("form_mensagem").value
+
+                if (nome == "" || email == "" || mensagem == "") {
+                    // Avisa caso o formulário esteja incompleto.
+                    window.alert("Ops, formulário incompleto.")
+                } else {
+                    // Exibe uma mensagem caso tente enviar o formulário.
+                    window.alert("Olá, " + nome + "! Este formulário não está ativo, mas obrigado pela visita!");
+                }
+
             }
         </script>
     </head>
@@ -145,26 +202,59 @@
 
         <!-- SOBRE MIM -->
          <div id="sobre" class="conteudo">
+            <p class="titulo_secao">Sobre Mim</p><br>
             <p>Prudentino <i>curitibanizado</i>.</p>
             <p>Desde cedo me interessei por computadores e atividades que envolvam esforço mental. Gosto de resolver problemas.</p>
             <p>Tenho ampla experiência trabalhando com produtos e serviços digitais de empresas globais, e domino tanto áreas de negócio quanto de tecnologia.</p>
             <p>Acredito que um trabalho de excelência é feito pela combinaçao de conhecimento, prática, curiosidade, criatividade e persistência.</p>
+            <br>
          </div>
 
         <!-- FORMAÇÃO & EXPERIÊNCIA -->
         <div id="formacao" class="conteudo" hidden>
+            <p class="titulo_secao">Formação & Experiência</p><br>
             <p><b>Technical Product Specialist</b>, EBANX, Curitiba</p>
+            <p class="observacao">Dezembro 2020 - Atual</p>
+            <ul>
+                <li>Especialista técnico de produtos de pagamentos digitais.</li>
+                <li>Integração e performance de pagamentos por cartão e meios alternativos de pagamento.</li>
+                <li>Atuação no Brasil e América Latina.</li>
+            </ul>
+            <br>
             <p><b>Quality Assurance Leader</b>, Wipro, Curitiba</p>
+            <p class="observacao">Julho 2015 - Dezembro 2020</p>
+            <ul>
+                <li>Definição e monitoramento de processos de negócio.</li>
+                <li>Auditorias de qualidade, planos de ação corretiva e preventiva, e projetos de melhoria contínua.</li>
+                <li>Ponto focal de iniciativas <i>Lean</i> e <i>Six Sigma</i>.</li>
+            </ul>
+            <br>
         </div>
 
         <!-- PORTFOLIO -->
         <div id="portfolio" class="conteudo" hidden>
-            <p>Link pro github?</p>
+            <p class="titulo_secao">Portfolio</p><br>
+            GitHub: <a href="https://github.com/dansilvente">https://github.com/dansilvente</a>
+            <br><br>
         </div>
 
         <!-- CONTATO -->
          <div id="contato" class="conteudo" hidden>
-            <p>Linkedin, email, etc.</p>
+            <p class="titulo_secao">Contato</p><br>
+            <!-- NOME, EMAIL, MENSAGEM -->
+            <form action="submit">
+                <label for="form_name">Nome</label>
+                <input type="text" name="Nome" id="form_nome">
+                <br>
+                <label for="form_email">Email</label>
+                <input type="email" name="Email" id="form_email">
+                <br>
+                <label for="form_mensagem">Mensagem</label>
+                <textarea name="Mensagem" id="form_mensagem" rows="10"></textarea>
+                <br>
+                <input class="botaoFormulario" type="button" value="Enviar Mensagem" onclick="botaoFormulario();">
+                <br>
+            </form>
          </div>
     </body>
 </html>
